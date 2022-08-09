@@ -1,6 +1,6 @@
 // Copyright (c) 2022. Heusala Group Oy <info@heusalagroup.fi>. All rights reserved.
 
-export const VALID_ADMIN_DOMAINS = ['heusalagroup.fi'];
+export const VALID_ADMIN_DOMAINS = ['example.fi', 'example.com'];
 
 /**
  * `GET /`
