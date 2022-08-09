@@ -11,19 +11,19 @@ export const DASHBOARD_API_INDEX_PATH = '/';
 // *************** AUTHENTICATIONS *************** //
 
 /**
- * `POST /authenticateEmail`
+ * `POST /authenticate`
  */
-export const DASHBOARD_API_AUTHENTICATE_EMAIL_PATH = '/authenticateEmail';
+export const DASHBOARD_API_AUTHENTICATE_EMAIL_PATH = '/authenticate';
 
 /**
- * `POST /verifyEmailToken`
+ * `POST /authenticate/verify-token`
  */
-export const DASHBOARD_API_VERIFY_EMAIL_TOKEN_PATH = '/verifyEmailToken';
+export const DASHBOARD_API_VERIFY_EMAIL_TOKEN_PATH = '/authenticate/verify-token';
 
 /**
- * `POST /verifyEmailCode`
+ * `POST /authenticate/verify-code`
  */
-export const DASHBOARD_API_VERIFY_EMAIL_CODE_PATH = '/verifyEmailCode';
+export const DASHBOARD_API_VERIFY_EMAIL_CODE_PATH = '/authenticate/verify-code';
 
 
 // *************** WORKSPACES *************** //
