@@ -1,8 +1,8 @@
 // Copyright (c) 2022. Heusala Group Oy <info@heusalagroup.fi>. All rights reserved.
 
-import { isJsonString } from "../../../../../fi/hg/core/Json";
-import { hasNoOtherKeysInDevelopment, isRegularObject, isString } from "../../../../../fi/hg/core/modules/lodash";
-import { StoredRepositoryItem } from "../../../../../fi/hg/core/simpleRepository/types/StoredRepositoryItem";
+import { isJsonString } from "../../../../core/Json";
+import { hasNoOtherKeysInDevelopment, isRegularObject, isString } from "../../../../core/modules/lodash";
+import { StoredRepositoryItem } from "../../../../core/simpleRepository/types/StoredRepositoryItem";
 
 export interface StoredWorkspaceRepositoryItem extends StoredRepositoryItem {
     readonly id             : string;
