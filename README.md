@@ -1,6 +1,6 @@
 # @heusalagroup/fi.hg.dashboard
 
-Common module for @heusalagroup/hg-dashboard
+Common module for [@heusalagroup/hg-dashboard](https://github.com/heusalagroup/hg-dashboard-private).
 
 ### Install commands for frontend only project
 
