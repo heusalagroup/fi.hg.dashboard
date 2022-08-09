@@ -23,7 +23,7 @@ export class UserRepositoryService implements RepositoryService<StoredUserReposi
     protected readonly _sharedClientService : SharedClientService;
     protected readonly _observer            : Observer<RepositoryServiceEvent>;
     protected _repository                   : Repository<StoredUserRepositoryItem>  | undefined;
-    protected _repositoryInitializer        : RepositoryInitializer<StoredUserRepositoryItem>  | undefined;
+    protected _repositoryInitializer        : RepositoryInitializer<StoredUserRepositoryItem>;
 
     public constructor (
         sharedClientService   : SharedClientService,
@@ -88,6 +88,7 @@ export class UserRepositoryService implements RepositoryService<StoredUserReposi
 
     public async getUserById (id: string) : Promise<UserRepositoryItem | undefined> {
         await this._sharedClientService.waitForInitialization();
+        if (!this._repository) throw new TypeError(`UserRepositoryService: No repository constructed`);
         const foundItem : RepositoryEntry<StoredUserRepositoryItem> | undefined = await this._repository.findById(id);
         if (!foundItem) return undefined;
         return parseUserRepositoryItem(
@@ -102,6 +103,7 @@ export class UserRepositoryService implements RepositoryService<StoredUserReposi
         workspaceId: string
     ) : Promise<void> {
         await this._sharedClientService.waitForInitialization();
+        if (!this._repository) throw new TypeError(`UserRepositoryService: No repository constructed`);
         const list : readonly RepositoryEntry<StoredUserRepositoryItem>[] = await this._getAllUsersByWorkspaceId(workspaceId);
         await this._repository.deleteByList(list);
     }
@@ -110,6 +112,7 @@ export class UserRepositoryService implements RepositoryService<StoredUserReposi
         item : UserRepositoryItem
     ) : Promise<UserRepositoryItem> {
         await this._sharedClientService.waitForInitialization();
+        if (!this._repository) throw new TypeError(`UserRepositoryService: No repository constructed`);
         const foundItem = await this._repository.updateOrCreateItem(toStoredUserRepositoryItem(item));
         return parseUserRepositoryItem(
             foundItem.id,
@@ -124,12 +127,14 @@ export class UserRepositoryService implements RepositoryService<StoredUserReposi
     private async _getAllUsersByWorkspaceId (
         workspaceId : string
     ) : Promise<readonly RepositoryEntry<StoredUserRepositoryItem>[]> {
+        if (!this._repository) throw new TypeError(`UserRepositoryService: No repository constructed`);
         return await this._repository.getAllByProperty('workspaceId', workspaceId);
     }
 
     private async _getAllUsersByEmail (
         email : string
     ) : Promise<readonly RepositoryEntry<StoredUserRepositoryItem>[]> {
+        if (!this._repository) throw new TypeError(`UserRepositoryService: No repository constructed`);
         return await this._repository.getAllByProperty('email', toLower(email));
     }
 

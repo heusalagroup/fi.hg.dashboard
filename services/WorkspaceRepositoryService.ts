@@ -23,7 +23,7 @@ export class WorkspaceRepositoryService implements RepositoryService<StoredWorks
     protected readonly _sharedClientService : SharedClientService;
     protected readonly _observer            : Observer<RepositoryServiceEvent>;
     protected _repository                   : Repository<StoredWorkspaceRepositoryItem>  | undefined;
-    protected _repositoryInitializer        : RepositoryInitializer<StoredWorkspaceRepositoryItem>  | undefined;
+    protected _repositoryInitializer        : RepositoryInitializer<StoredWorkspaceRepositoryItem>;
 
     public constructor (
         sharedClientService   : SharedClientService,
@@ -80,6 +80,7 @@ export class WorkspaceRepositoryService implements RepositoryService<StoredWorks
 
     public async getWorkspaceById (id: string) : Promise<WorkspaceRepositoryItem | undefined> {
         await this._sharedClientService.waitForInitialization();
+        if (!this._repository) throw new TypeError(`WorkspaceRepositoryService: No repository constructed`);
         const foundItem : RepositoryEntry<StoredWorkspaceRepositoryItem> | undefined = await this._repository.findById(id);
         if (!foundItem) return undefined;
         return parseWorkspaceRepositoryItem(
@@ -90,6 +91,7 @@ export class WorkspaceRepositoryService implements RepositoryService<StoredWorks
 
     public async deleteAllWorkspaces () : Promise<void> {
         await this._sharedClientService.waitForInitialization();
+        if (!this._repository) throw new TypeError(`WorkspaceRepositoryService: No repository constructed`);
         const list : readonly RepositoryEntry<StoredWorkspaceRepositoryItem>[] = await this._getAllWorkspaces();
         await this._repository.deleteByList(list);
     }
@@ -98,6 +100,7 @@ export class WorkspaceRepositoryService implements RepositoryService<StoredWorks
         idList : readonly string[]
     ) : Promise<void> {
         await this._sharedClientService.waitForInitialization();
+        if (!this._repository) throw new TypeError(`WorkspaceRepositoryService: No repository constructed`);
         const list : readonly RepositoryEntry<StoredWorkspaceRepositoryItem>[] = await this._getSomeWorkspaces(idList);
         await this._repository.deleteByList(list);
     }
@@ -106,6 +109,7 @@ export class WorkspaceRepositoryService implements RepositoryService<StoredWorks
         item : WorkspaceRepositoryItem
     ) : Promise<WorkspaceRepositoryItem> {
         await this._sharedClientService.waitForInitialization();
+        if (!this._repository) throw new TypeError(`WorkspaceRepositoryService: No repository constructed`);
         const foundItem = await this._repository.updateOrCreateItem(toStoredWorkspaceRepositoryItem(item));
         return parseWorkspaceRepositoryItem(foundItem.id, foundItem.data);
     }
@@ -113,12 +117,14 @@ export class WorkspaceRepositoryService implements RepositoryService<StoredWorks
     // PRIVATE METHODS
 
     private async _getAllWorkspaces () : Promise<readonly RepositoryEntry<StoredWorkspaceRepositoryItem>[]> {
+        if (!this._repository) throw new TypeError(`WorkspaceRepositoryService: No repository constructed`);
         return await this._repository.getAll();
     }
 
     private async _getSomeWorkspaces (
         idList : readonly string[]
     ) : Promise<readonly RepositoryEntry<StoredWorkspaceRepositoryItem>[]> {
+        if (!this._repository) throw new TypeError(`WorkspaceRepositoryService: No repository constructed`);
         return await this._repository.getSome(idList);
     }
 
