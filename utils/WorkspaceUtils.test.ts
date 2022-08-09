@@ -6,7 +6,7 @@ import { WorkspaceUtils } from "./WorkspaceUtils";
 describe("WorkspaceUtils", () => {
 
     it("is class", () => {
-        expect(WorkspaceUtils).toBeClass();
+        expect(WorkspaceUtils).toBeDefined();
     })
 
 });
