@@ -1,5 +1,9 @@
 // Copyright (c) 2022. Heusala Group Oy <info@heusalagroup.fi>. All rights reserved.
 
+import { Language } from "../../core/types/Language";
+import { AuthEmailQueryParam } from "../../core/auth/email/types/AuthEmailQueryParam";
+import { CallbackWithLanguage } from "../../core/auth/email/constants";
+
 export const VALID_ADMIN_DOMAINS = ['example.fi', 'example.com'];
 
 /**
@@ -25,6 +29,9 @@ export const DASHBOARD_API_VERIFY_EMAIL_TOKEN_PATH = '/authenticate/verify-token
  */
 export const DASHBOARD_API_VERIFY_EMAIL_CODE_PATH = '/authenticate/verify-code';
 
+export const DASHBOARD_AUTHENTICATE_EMAIL_URL_WITH_LANGUAGE : CallbackWithLanguage = (lang: Language) => `${DASHBOARD_API_AUTHENTICATE_EMAIL_PATH}?${AuthEmailQueryParam.LANGUAGE}=${q(lang)}`;
+export const DASHBOARD_VERIFY_EMAIL_CODE_URL_WITH_LANGUAGE  : CallbackWithLanguage = (lang: Language) => `${DASHBOARD_API_VERIFY_EMAIL_TOKEN_PATH}?${AuthEmailQueryParam.LANGUAGE}=${q(lang)}`;
+export const DASHBOARD_VERIFY_EMAIL_TOKEN_URL_WITH_LANGUAGE : CallbackWithLanguage = (lang: Language) => `${DASHBOARD_API_VERIFY_EMAIL_CODE_PATH}?${AuthEmailQueryParam.LANGUAGE}=${q(lang)}`;
 
 // *************** WORKSPACES *************** //
 
@@ -142,3 +149,7 @@ export const DASHBOARD_API_UPDATE_MY_WORKSPACE_USER_WORKSPACE_ID = "parentId";
  * `id`
  */
 export const DASHBOARD_API_UPDATE_MY_WORKSPACE_USER_USER_ID = "id";
+
+function q (value: string) : string {
+    return encodeURIComponent(value);
+}
