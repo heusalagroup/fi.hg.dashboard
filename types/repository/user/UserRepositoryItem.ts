@@ -1,11 +1,14 @@
 // Copyright (c) 2022. Heusala Group Oy <info@heusalagroup.fi>. All rights reserved.
 
 import { isUser, User } from "../../User";
-import { hasNoOtherKeysInDevelopment, isRegularObject, isString, toLower } from "../../../../core/modules/lodash";
+import { toLower } from "../../../../core/functions/toLower";
 import { isStoredUserRepositoryItem, StoredUserRepositoryItem } from "./StoredUserRepositoryItem";
 import { LogService } from "../../../../core/LogService";
 import { RepositoryItem } from "../../../../core/simpleRepository/types/RepositoryItem";
 import { parseJson } from "../../../../core/Json";
+import { isString } from "../../../../core/types/String";
+import { isRegularObject } from "../../../../core/types/RegularObject";
+import { hasNoOtherKeysInDevelopment } from "../../../../core/types/OtherKeys";
 
 const LOG = LogService.createLogger('UserRepositoryItem');
 

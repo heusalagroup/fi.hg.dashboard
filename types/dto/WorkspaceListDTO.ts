@@ -1,7 +1,9 @@
 // Copyright (c) 2022. Heusala Group Oy <info@heusalagroup.fi>. All rights reserved.
 
 import { isWorkspace, Workspace } from "../Workspace";
-import { hasNoOtherKeysInDevelopment, isArrayOf, isRegularObject } from "../../../core/modules/lodash";
+import { isRegularObject } from "../../../core/types/RegularObject";
+import { hasNoOtherKeysInDevelopment } from "../../../core/types/OtherKeys";
+import { isArrayOf } from "../../../core/types/Array";
 
 export interface WorkspaceListDTO {
     readonly payload : readonly Workspace[];

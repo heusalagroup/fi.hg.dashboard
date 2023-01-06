@@ -2,7 +2,9 @@
 
 import { isWorkspace, Workspace } from "../Workspace";
 import { isUser, User } from "../User";
-import { hasNoOtherKeys, isArrayOf, isRegularObject } from "../../../core/modules/lodash";
+import { isRegularObject } from "../../../core/types/RegularObject";
+import { hasNoOtherKeys } from "../../../core/types/OtherKeys";
+import { isArrayOf } from "../../../core/types/Array";
 
 export interface NewWorkspaceDTO {
 

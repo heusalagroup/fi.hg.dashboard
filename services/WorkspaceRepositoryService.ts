@@ -2,7 +2,7 @@
 
 import { LogService } from "../../core/LogService";
 import { RepositoryEntry } from "../../core/simpleRepository/types/RepositoryEntry";
-import { map } from "../../core/modules/lodash";
+import { map } from "../../core/functions/map";
 import { Observer, ObserverCallback, ObserverDestructor } from "../../core/Observer";
 import { StoredWorkspaceRepositoryItem } from "../types/repository/workspace/StoredWorkspaceRepositoryItem";
 import { parseWorkspaceRepositoryItem, toStoredWorkspaceRepositoryItem, WorkspaceRepositoryItem } from "../types/repository/workspace/WorkspaceRepositoryItem";

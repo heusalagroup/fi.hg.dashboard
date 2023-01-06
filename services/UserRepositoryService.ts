@@ -1,7 +1,8 @@
 // Copyright (c) 2021-2022. Heusala Group Oy <info@heusalagroup.fi>. All rights reserved.
 
 import { LogService } from "../../core/LogService";
-import { map, toLower } from "../../core/modules/lodash";
+import { map } from "../../core/functions/map";
+import { toLower } from "../../core/functions/toLower";
 import { Observer, ObserverCallback, ObserverDestructor } from "../../core/Observer";
 import { RepositoryEntry } from "../../core/simpleRepository/types/RepositoryEntry";
 import { RepositoryServiceEvent } from "../../core/simpleRepository/types/RepositoryServiceEvent";
