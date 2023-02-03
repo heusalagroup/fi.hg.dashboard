@@ -30,8 +30,8 @@ export const DASHBOARD_API_VERIFY_EMAIL_TOKEN_PATH = '/authenticate/verify-token
 export const DASHBOARD_API_VERIFY_EMAIL_CODE_PATH = '/authenticate/verify-code';
 
 export const DASHBOARD_AUTHENTICATE_EMAIL_URL_WITH_LANGUAGE : CallbackWithLanguage = (lang: Language) => `${DASHBOARD_API_AUTHENTICATE_EMAIL_PATH}?${AuthEmailQueryParam.LANGUAGE}=${q(lang)}`;
-export const DASHBOARD_VERIFY_EMAIL_CODE_URL_WITH_LANGUAGE  : CallbackWithLanguage = (lang: Language) => `${DASHBOARD_API_VERIFY_EMAIL_TOKEN_PATH}?${AuthEmailQueryParam.LANGUAGE}=${q(lang)}`;
-export const DASHBOARD_VERIFY_EMAIL_TOKEN_URL_WITH_LANGUAGE : CallbackWithLanguage = (lang: Language) => `${DASHBOARD_API_VERIFY_EMAIL_CODE_PATH}?${AuthEmailQueryParam.LANGUAGE}=${q(lang)}`;
+export const DASHBOARD_VERIFY_EMAIL_CODE_URL_WITH_LANGUAGE  : CallbackWithLanguage = (lang: Language) => `${DASHBOARD_API_VERIFY_EMAIL_CODE_PATH}?${AuthEmailQueryParam.LANGUAGE}=${q(lang)}`;
+export const DASHBOARD_VERIFY_EMAIL_TOKEN_URL_WITH_LANGUAGE : CallbackWithLanguage = (lang: Language) => `${DASHBOARD_API_VERIFY_EMAIL_TOKEN_PATH}?${AuthEmailQueryParam.LANGUAGE}=${q(lang)}`;
 
 // *************** WORKSPACES *************** //
 
