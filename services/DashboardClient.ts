@@ -5,7 +5,21 @@ import { LogLevel } from "../../core/types/LogLevel";
 import { HttpService } from "../../core/HttpService";
 import { EmailTokenDTO, isEmailTokenDTO } from "../../core/auth/email/types/EmailTokenDTO";
 import { IndexDTO, isIndexDTO } from "../types/dto/IndexDTO";
-import { DASHBOARD_API_AUTHENTICATE_EMAIL_PATH, DASHBOARD_API_DELETE_MY_WORKSPACE_LIST_PATH, DASHBOARD_API_GET_MY_PROFILE_PATH, DASHBOARD_API_GET_MY_WORKSPACE_LIST_PATH, DASHBOARD_API_INDEX_PATH, DASHBOARD_API_POST_MY_WORKSPACE_PATH, DASHBOARD_API_VERIFY_EMAIL_CODE_PATH, DASHBOARD_API_VERIFY_EMAIL_TOKEN_PATH, createNewWorkspaceUserPath, getDashboardMyUserListPath, getWorkspaceUserPath, updateWorkspaceUserPath } from "../constants/dashboard-api";
+import {
+    DASHBOARD_API_AUTHENTICATE_EMAIL_PATH,
+    DASHBOARD_API_DELETE_MY_WORKSPACE_LIST_PATH,
+    DASHBOARD_API_GET_MY_PROFILE_PATH,
+    DASHBOARD_API_GET_MY_WORKSPACE_LIST_PATH,
+    DASHBOARD_API_INDEX_PATH,
+    DASHBOARD_API_POST_MY_WORKSPACE_PATH,
+    DASHBOARD_API_VERIFY_EMAIL_CODE_PATH,
+    DASHBOARD_API_VERIFY_EMAIL_TOKEN_PATH,
+    createNewWorkspaceUserPath,
+    getDashboardMyUserListPath,
+    getWorkspaceUserPath,
+    updateWorkspaceUserPath,
+    getDashboardMyUserProfileListPath
+} from "../constants/dashboard-api";
 import { isProfileDTO, ProfileDTO } from "../types/dto/ProfileDTO";
 import { DASHBOARD_AUTHORIZATION_HEADER_NAME } from "../constants/dashboard-headers";
 import { DashboardQueryParam } from "../types/DashboardQueryParam";
@@ -413,6 +427,29 @@ export class DashboardClient {
             throw new TypeError(`Result was not UserListDTO: ` + result);
         }
         return result?.payload;
+    }
+
+    /**
+     * Fetch current user information from the backend for this workspace
+     *
+     * @param workspaceId
+     */
+    public async getWorkspaceUserByProfile (
+        workspaceId: string
+    ) : Promise<User | undefined> {
+        const token = this._sessionToken?.token;
+        if (!token) throw new TypeError(`getWorkspaceUserByProfile: You must login first`);
+        const result = await HttpService.getJson(
+            `${this._url}${getDashboardMyUserProfileListPath(workspaceId)}`,
+            {
+                [DASHBOARD_AUTHORIZATION_HEADER_NAME]: token
+            }
+        );
+        if (!isUser(result)) {
+            LOG.debug(`getWorkspaceUserByProfile: result = `, result);
+            throw new TypeError(`Result was not UserO: ` + result);
+        }
+        return result;
     }
 
     /**
