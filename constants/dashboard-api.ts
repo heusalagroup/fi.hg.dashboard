@@ -76,6 +76,11 @@ export const DASHBOARD_API_GET_MY_WORKSPACE_USER_LIST_PATH = "/my/workspaces/{pa
 export const getDashboardMyUserListPath = (parentId: string) => `/my/workspaces/${encodeURIComponent(parentId)}/users`;
 
 /**
+* `GET /my/workspaces/{parentId}/profile`
+*/
+export const getDashboardMyUserProfileListPath = (parentId: string) => `/my/workspaces/${encodeURIComponent(parentId)}/profile`;
+
+/**
  * `parentId`
  */
 export const DASHBOARD_API_GET_MY_WORKSPACE_USER_LIST_WORKSPACE_ID = "parentId";
