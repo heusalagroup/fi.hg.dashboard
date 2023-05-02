@@ -1,3 +1,5 @@
+**Join our [Discord](https://discord.gg/UBTrHxA78f) to discuss about our software!**
+
 # @heusalagroup/fi.hg.dashboard
 
 Common module for [@heusalagroup/hg-dashboard](https://github.com/heusalagroup/hg-dashboard-private).
