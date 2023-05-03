@@ -49,7 +49,9 @@ export class WorkspaceRepositoryService implements RepositoryService<StoredWorks
     public async initialize () : Promise<void> {
         LOG.debug(`Initialization started`);
         await this._sharedClientService.waitForInitialization();
-        this._repository = await this._repositoryInitializer.initializeRepository( this._sharedClientService.getClient() );
+        const client = this._sharedClientService.getClient();
+        if (!client) throw new TypeError(`Client not configured`);
+        this._repository = await this._repositoryInitializer.initializeRepository( client );
         LOG.debug(`Initialization finished`);
         if (this._observer.hasCallbacks(RepositoryServiceEvent.INITIALIZED)) {
             this._observer.triggerEvent(RepositoryServiceEvent.INITIALIZED);

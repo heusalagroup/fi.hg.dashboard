@@ -52,7 +52,9 @@ export class UserRepositoryService implements RepositoryService<StoredUserReposi
     ) {
         LOG.debug(`Initialization started: `, roomType);
         await this._sharedClientService.waitForInitialization();
-        this._repository = await this._repositoryInitializer.initializeRepository( this._sharedClientService.getClient() );
+        const client = this._sharedClientService.getClient();
+        if (!client) throw new TypeError(`No client configured`);
+        this._repository = await this._repositoryInitializer.initializeRepository( client );
         LOG.debug(`Initialization finished: `, roomType);
         if (this._observer.hasCallbacks(RepositoryServiceEvent.INITIALIZED)) {
             this._observer.triggerEvent(RepositoryServiceEvent.INITIALIZED);
