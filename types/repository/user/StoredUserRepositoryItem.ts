@@ -1,13 +1,13 @@
 // Copyright (c) 2022. Heusala Group Oy <info@heusalagroup.fi>. All rights reserved.
 
 import { toLower } from "../../../../core/functions/toLower";
-import { StoredRepositoryItem } from "../../../../core/simpleRepository/types/StoredRepositoryItem";
+import { SimpleStoredRepositoryItem } from "../../../../core/simpleRepository/types/SimpleStoredRepositoryItem";
 import { isJsonString } from "../../../../core/Json";
 import { isString } from "../../../../core/types/String";
 import { isRegularObject } from "../../../../core/types/RegularObject";
 import { hasNoOtherKeysInDevelopment } from "../../../../core/types/OtherKeys";
 
-export interface StoredUserRepositoryItem extends StoredRepositoryItem {
+export interface StoredUserRepositoryItem extends SimpleStoredRepositoryItem {
     readonly id             : string;
     readonly workspaceId    : string;
     readonly email          : string;

@@ -4,12 +4,12 @@ import { LogService } from "../../core/LogService";
 import { map } from "../../core/functions/map";
 import { toLower } from "../../core/functions/toLower";
 import { Observer, ObserverCallback, ObserverDestructor } from "../../core/Observer";
-import { RepositoryEntry } from "../../core/simpleRepository/types/RepositoryEntry";
-import { RepositoryServiceEvent } from "../../core/simpleRepository/types/RepositoryServiceEvent";
-import { SharedClientService } from "../../core/simpleRepository/types/SharedClientService";
-import { Repository } from "../../core/simpleRepository/types/Repository";
-import { RepositoryInitializer } from "../../core/simpleRepository/types/RepositoryInitializer";
-import { RepositoryService } from "../../core/simpleRepository/types/RepositoryService";
+import { SimpleRepositoryEntry } from "../../core/simpleRepository/types/SimpleRepositoryEntry";
+import { SimpleRepositoryServiceEvent } from "../../core/simpleRepository/types/SimpleRepositoryServiceEvent";
+import { SimpleSharedClientService } from "../../core/simpleRepository/types/SimpleSharedClientService";
+import { SimpleRepository } from "../../core/simpleRepository/types/SimpleRepository";
+import { SimpleRepositoryInitializer } from "../../core/simpleRepository/types/SimpleRepositoryInitializer";
+import { SimpleRepositoryService } from "../../core/simpleRepository/types/SimpleRepositoryService";
 import { StoredUserRepositoryItem } from "../types/repository/user/StoredUserRepositoryItem";
 import { UserRepositoryItem, parseUserRepositoryItem, toStoredUserRepositoryItem } from "../types/repository/user/UserRepositoryItem";
 
@@ -17,28 +17,28 @@ const LOG = LogService.createLogger('UserRepositoryService');
 
 export type UserRepositoryServiceDestructor = ObserverDestructor;
 
-export class UserRepositoryService implements RepositoryService<StoredUserRepositoryItem> {
+export class UserRepositoryService implements SimpleRepositoryService<StoredUserRepositoryItem> {
 
-    public Event = RepositoryServiceEvent;
+    public Event = SimpleRepositoryServiceEvent;
 
-    protected readonly _sharedClientService : SharedClientService;
-    protected readonly _observer            : Observer<RepositoryServiceEvent>;
-    protected _repository                   : Repository<StoredUserRepositoryItem>  | undefined;
-    protected _repositoryInitializer        : RepositoryInitializer<StoredUserRepositoryItem>;
+    protected readonly _sharedClientService : SimpleSharedClientService;
+    protected readonly _observer            : Observer<SimpleRepositoryServiceEvent>;
+    protected _repository                   : SimpleRepository<StoredUserRepositoryItem>  | undefined;
+    protected _repositoryInitializer        : SimpleRepositoryInitializer<StoredUserRepositoryItem>;
 
     public constructor (
-        sharedClientService   : SharedClientService,
-        repositoryInitializer : RepositoryInitializer<StoredUserRepositoryItem>
+        sharedClientService   : SimpleSharedClientService,
+        repositoryInitializer : SimpleRepositoryInitializer<StoredUserRepositoryItem>
     ) {
-        this._observer = new Observer<RepositoryServiceEvent>("UserRepositoryService");
+        this._observer = new Observer<SimpleRepositoryServiceEvent>("UserRepositoryService");
         this._sharedClientService = sharedClientService;
         this._repositoryInitializer = repositoryInitializer;
         this._repository = undefined;
     }
 
     public on (
-        name: RepositoryServiceEvent,
-        callback: ObserverCallback<RepositoryServiceEvent>
+        name: SimpleRepositoryServiceEvent,
+        callback: ObserverCallback<SimpleRepositoryServiceEvent>
     ): UserRepositoryServiceDestructor {
         return this._observer.listenEvent(name, callback);
     }
@@ -56,16 +56,16 @@ export class UserRepositoryService implements RepositoryService<StoredUserReposi
         if (!client) throw new TypeError(`No client configured`);
         this._repository = await this._repositoryInitializer.initializeRepository( client );
         LOG.debug(`Initialization finished: `, roomType);
-        if (this._observer.hasCallbacks(RepositoryServiceEvent.INITIALIZED)) {
-            this._observer.triggerEvent(RepositoryServiceEvent.INITIALIZED);
+        if (this._observer.hasCallbacks(SimpleRepositoryServiceEvent.INITIALIZED)) {
+            this._observer.triggerEvent(SimpleRepositoryServiceEvent.INITIALIZED);
         }
     }
 
     public async getAllUsersByWorkspaceId (
         workspaceId: string
     ) : Promise<UserRepositoryItem[]> {
-        const list : readonly RepositoryEntry<StoredUserRepositoryItem>[] = await this._getAllUsersByWorkspaceId(workspaceId);
-        return map(list, (item: RepositoryEntry<StoredUserRepositoryItem>) : UserRepositoryItem => {
+        const list : readonly SimpleRepositoryEntry<StoredUserRepositoryItem>[] = await this._getAllUsersByWorkspaceId(workspaceId);
+        return map(list, (item: SimpleRepositoryEntry<StoredUserRepositoryItem>) : UserRepositoryItem => {
             return parseUserRepositoryItem(
                 item.id,
                 workspaceId,
@@ -78,8 +78,8 @@ export class UserRepositoryService implements RepositoryService<StoredUserReposi
     public async getAllUsersByEmail (
         email: string
     ) : Promise<UserRepositoryItem[]> {
-        const list : readonly RepositoryEntry<StoredUserRepositoryItem>[] = await this._getAllUsersByEmail(email);
-        return map(list, (item: RepositoryEntry<StoredUserRepositoryItem>) : UserRepositoryItem => {
+        const list : readonly SimpleRepositoryEntry<StoredUserRepositoryItem>[] = await this._getAllUsersByEmail(email);
+        return map(list, (item: SimpleRepositoryEntry<StoredUserRepositoryItem>) : UserRepositoryItem => {
             return parseUserRepositoryItem(
                 item.id,
                 item.data?.workspaceId,
@@ -92,7 +92,7 @@ export class UserRepositoryService implements RepositoryService<StoredUserReposi
     public async getUserById (id: string) : Promise<UserRepositoryItem | undefined> {
         await this._sharedClientService.waitForInitialization();
         if (!this._repository) throw new TypeError(`UserRepositoryService: No repository constructed`);
-        const foundItem : RepositoryEntry<StoredUserRepositoryItem> | undefined = await this._repository.findById(id);
+        const foundItem : SimpleRepositoryEntry<StoredUserRepositoryItem> | undefined = await this._repository.findById(id);
         if (!foundItem) return undefined;
         return parseUserRepositoryItem(
             foundItem.id,
@@ -107,7 +107,7 @@ export class UserRepositoryService implements RepositoryService<StoredUserReposi
     ) : Promise<void> {
         await this._sharedClientService.waitForInitialization();
         if (!this._repository) throw new TypeError(`UserRepositoryService: No repository constructed`);
-        const list : readonly RepositoryEntry<StoredUserRepositoryItem>[] = await this._getAllUsersByWorkspaceId(workspaceId);
+        const list : readonly SimpleRepositoryEntry<StoredUserRepositoryItem>[] = await this._getAllUsersByWorkspaceId(workspaceId);
         await this._repository.deleteByList(list);
     }
 
@@ -129,14 +129,14 @@ export class UserRepositoryService implements RepositoryService<StoredUserReposi
 
     private async _getAllUsersByWorkspaceId (
         workspaceId : string
-    ) : Promise<readonly RepositoryEntry<StoredUserRepositoryItem>[]> {
+    ) : Promise<readonly SimpleRepositoryEntry<StoredUserRepositoryItem>[]> {
         if (!this._repository) throw new TypeError(`UserRepositoryService: No repository constructed`);
         return await this._repository.getAllByProperty('workspaceId', workspaceId);
     }
 
     private async _getAllUsersByEmail (
         email : string
-    ) : Promise<readonly RepositoryEntry<StoredUserRepositoryItem>[]> {
+    ) : Promise<readonly SimpleRepositoryEntry<StoredUserRepositoryItem>[]> {
         if (!this._repository) throw new TypeError(`UserRepositoryService: No repository constructed`);
         return await this._repository.getAllByProperty('email', toLower(email));
     }

@@ -3,7 +3,7 @@
 import { isWorkspace, Workspace } from "../../Workspace";
 import { isStoredWorkspaceRepositoryItem, StoredWorkspaceRepositoryItem } from "./StoredWorkspaceRepositoryItem";
 import { LogService } from "../../../../core/LogService";
-import { RepositoryItem } from "../../../../core/simpleRepository/types/RepositoryItem";
+import { SimpleRepositoryItem } from "../../../../core/simpleRepository/types/SimpleRepositoryItem";
 import { parseJson } from "../../../../core/Json";
 import { isString } from "../../../../core/types/String";
 import { isRegularObject } from "../../../../core/types/RegularObject";
@@ -11,7 +11,7 @@ import { hasNoOtherKeysInDevelopment } from "../../../../core/types/OtherKeys";
 
 const LOG = LogService.createLogger('WorkspaceRepositoryItem');
 
-export interface WorkspaceRepositoryItem extends RepositoryItem<Workspace> {
+export interface WorkspaceRepositoryItem extends SimpleRepositoryItem<Workspace> {
     readonly id: string;
     readonly target: Workspace;
 }

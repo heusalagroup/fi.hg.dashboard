@@ -4,7 +4,7 @@ import { isUser, User } from "../../User";
 import { toLower } from "../../../../core/functions/toLower";
 import { isStoredUserRepositoryItem, StoredUserRepositoryItem } from "./StoredUserRepositoryItem";
 import { LogService } from "../../../../core/LogService";
-import { RepositoryItem } from "../../../../core/simpleRepository/types/RepositoryItem";
+import { SimpleRepositoryItem } from "../../../../core/simpleRepository/types/SimpleRepositoryItem";
 import { parseJson } from "../../../../core/Json";
 import { isString } from "../../../../core/types/String";
 import { isRegularObject } from "../../../../core/types/RegularObject";
@@ -12,7 +12,7 @@ import { hasNoOtherKeysInDevelopment } from "../../../../core/types/OtherKeys";
 
 const LOG = LogService.createLogger('UserRepositoryItem');
 
-export interface UserRepositoryItem extends RepositoryItem<User> {
+export interface UserRepositoryItem extends SimpleRepositoryItem<User> {
     readonly id          : string;
     readonly workspaceId : string;
     readonly email       : string;
