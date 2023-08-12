@@ -16,7 +16,7 @@ const LOG = LogService.createLogger('WorkspaceRepositoryService');
 
 export type WorkspaceRepositoryServiceDestructor = ObserverDestructor;
 
-export class WorkspaceRepositoryService implements SimpleRepositoryService<StoredWorkspaceRepositoryItem> {
+export class WorkspaceRepositoryService implements SimpleRepositoryService {
 
     public Event = SimpleRepositoryServiceEvent;
 

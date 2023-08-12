@@ -2,7 +2,7 @@
 
 import { Language } from "../../core/types/Language";
 import { AuthEmailQueryParam } from "../../core/auth/email/types/AuthEmailQueryParam";
-import { CallbackWithLanguage } from "../../core/auth/email/constants";
+import { CallbackWithLanguage } from "../../core/auth/email/email-auth-constants";
 
 export const VALID_ADMIN_DOMAINS = ['example.fi', 'example.com'];
 

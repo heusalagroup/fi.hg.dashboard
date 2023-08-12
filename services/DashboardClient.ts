@@ -305,7 +305,9 @@ export class DashboardClient {
      * @param changes
      */
     public async updateWorkspace (
+        // @ts-ignore
         workspaceId: string,
+        // @ts-ignore
         changes: Partial<Workspace>
     ) : Promise<Workspace> {
         throw new Error('Workspace update not implemented yet');
@@ -346,6 +348,7 @@ export class DashboardClient {
      * @param idList
      */
     public async getMyWorkspaceList (
+        // @ts-ignore
         idList: string[] = []
     ) : Promise<readonly Workspace[]> {
         const token = this._sessionToken?.token;
@@ -398,6 +401,7 @@ export class DashboardClient {
      */
     public async getWorkspaceUserList (
         workspaceId: string,
+        // @ts-ignore
         userIdList: string[] = []
     ) : Promise<readonly User[]> {
         const token = this._sessionToken?.token;
