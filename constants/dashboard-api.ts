@@ -1,8 +1,8 @@
 // Copyright (c) 2022. Heusala Group Oy <info@heusalagroup.fi>. All rights reserved.
 
-import { Language } from "../../core/types/Language";
-import { AuthEmailQueryParam } from "../../core/auth/email/types/AuthEmailQueryParam";
-import { CallbackWithLanguage } from "../../core/auth/email/email-auth-constants";
+import { Language } from "../../../../io/hyperify/core/types/Language";
+import { AuthEmailQueryParam } from "../../../../io/hyperify/core/auth/email/types/AuthEmailQueryParam";
+import { CallbackWithLanguage } from "../../../../io/hyperify/core/auth/email/email-auth-constants";
 
 export const VALID_ADMIN_DOMAINS = ['example.fi', 'example.com'];
 

@@ -1,18 +1,18 @@
 // Copyright (c) 2022. Heusala Group Oy <info@heusalagroup.fi>. All rights reserved.
 
-import { LogService } from "../../core/LogService";
-import { LogLevel } from "../../core/types/LogLevel";
-import { HttpService } from "../../core/HttpService";
-import { EmailTokenDTO, isEmailTokenDTO } from "../../core/auth/email/types/EmailTokenDTO";
+import { LogService } from "../../../../io/hyperify/core/LogService";
+import { LogLevel } from "../../../../io/hyperify/core/types/LogLevel";
+import { HttpService } from "../../../../io/hyperify/core/HttpService";
+import { EmailTokenDTO, isEmailTokenDTO } from "../../../../io/hyperify/core/auth/email/types/EmailTokenDTO";
 import { IndexDTO, isIndexDTO } from "../types/dto/IndexDTO";
 import { DASHBOARD_API_AUTHENTICATE_EMAIL_PATH, DASHBOARD_API_DELETE_MY_WORKSPACE_LIST_PATH, DASHBOARD_API_GET_MY_PROFILE_PATH, DASHBOARD_API_GET_MY_WORKSPACE_LIST_PATH, DASHBOARD_API_INDEX_PATH, DASHBOARD_API_POST_MY_WORKSPACE_PATH, DASHBOARD_API_VERIFY_EMAIL_CODE_PATH, DASHBOARD_API_VERIFY_EMAIL_TOKEN_PATH, createNewWorkspaceUserPath, getDashboardMyUserListPath, getWorkspaceUserPath, updateWorkspaceUserPath } from "../constants/dashboard-api";
 import { isProfileDTO, ProfileDTO } from "../types/dto/ProfileDTO";
 import { DASHBOARD_AUTHORIZATION_HEADER_NAME } from "../constants/dashboard-headers";
 import { DashboardQueryParam } from "../types/DashboardQueryParam";
-import { createAuthenticateEmailDTO } from "../../core/auth/email/types/AuthenticateEmailDTO";
-import { ReadonlyJsonAny } from "../../core/Json";
-import { createVerifyEmailTokenDTO } from "../../core/auth/email/types/VerifyEmailTokenDTO";
-import { createVerifyEmailCodeDTO } from "../../core/auth/email/types/VerifyEmailCodeDTO";
+import { createAuthenticateEmailDTO } from "../../../../io/hyperify/core/auth/email/types/AuthenticateEmailDTO";
+import { ReadonlyJsonAny } from "../../../../io/hyperify/core/Json";
+import { createVerifyEmailTokenDTO } from "../../../../io/hyperify/core/auth/email/types/VerifyEmailTokenDTO";
+import { createVerifyEmailCodeDTO } from "../../../../io/hyperify/core/auth/email/types/VerifyEmailCodeDTO";
 import { isNewWorkspaceDTO, NewWorkspaceDTO } from "../types/dto/NewWorkspaceDTO";
 import { Workspace } from "../types/Workspace";
 import { isWorkspaceListDTO } from "../types/dto/WorkspaceListDTO";

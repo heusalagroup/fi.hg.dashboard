@@ -1,10 +1,10 @@
 // Copyright (c) 2022. Heusala Group Oy <info@heusalagroup.fi>. All rights reserved.
 
-import { isJsonString } from "../../../../core/Json";
-import { SimpleStoredRepositoryItem } from "../../../../core/simpleRepository/types/SimpleStoredRepositoryItem";
-import { isString } from "../../../../core/types/String";
-import { isRegularObject } from "../../../../core/types/RegularObject";
-import { hasNoOtherKeysInDevelopment } from "../../../../core/types/OtherKeys";
+import { isJsonString } from "../../../../../../io/hyperify/core/Json";
+import { SimpleStoredRepositoryItem } from "../../../../../../io/hyperify/core/simpleRepository/types/SimpleStoredRepositoryItem";
+import { isString } from "../../../../../../io/hyperify/core/types/String";
+import { isRegularObject } from "../../../../../../io/hyperify/core/types/RegularObject";
+import { hasNoOtherKeysInDevelopment } from "../../../../../../io/hyperify/core/types/OtherKeys";
 
 export interface StoredWorkspaceRepositoryItem extends SimpleStoredRepositoryItem {
     readonly id             : string;

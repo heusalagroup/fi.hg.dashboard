@@ -1,8 +1,8 @@
 // Copyright (c) 2022. Heusala Group Oy <info@heusalagroup.fi>. All rights reserved.
 
-import { first } from "../../core/functions/first";
-import { toUpper } from "../../core/functions/toUpper";
-import { trim } from "../../core/functions/trim";
+import { first } from "../../../../io/hyperify/core/functions/first";
+import { toUpper } from "../../../../io/hyperify/core/functions/toUpper";
+import { trim } from "../../../../io/hyperify/core/functions/trim";
 import { User } from "../types/User";
 
 export class UserUtils {

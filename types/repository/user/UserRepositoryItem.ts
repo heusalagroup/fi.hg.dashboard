@@ -1,14 +1,14 @@
 // Copyright (c) 2022. Heusala Group Oy <info@heusalagroup.fi>. All rights reserved.
 
 import { isUser, User } from "../../User";
-import { toLower } from "../../../../core/functions/toLower";
+import { toLower } from "../../../../../../io/hyperify/core/functions/toLower";
 import { isStoredUserRepositoryItem, StoredUserRepositoryItem } from "./StoredUserRepositoryItem";
-import { LogService } from "../../../../core/LogService";
-import { SimpleRepositoryItem } from "../../../../core/simpleRepository/types/SimpleRepositoryItem";
-import { parseJson } from "../../../../core/Json";
-import { isString } from "../../../../core/types/String";
-import { isRegularObject } from "../../../../core/types/RegularObject";
-import { hasNoOtherKeysInDevelopment } from "../../../../core/types/OtherKeys";
+import { LogService } from "../../../../../../io/hyperify/core/LogService";
+import { SimpleRepositoryItem } from "../../../../../../io/hyperify/core/simpleRepository/types/SimpleRepositoryItem";
+import { parseJson } from "../../../../../../io/hyperify/core/Json";
+import { isString } from "../../../../../../io/hyperify/core/types/String";
+import { isRegularObject } from "../../../../../../io/hyperify/core/types/RegularObject";
+import { hasNoOtherKeysInDevelopment } from "../../../../../../io/hyperify/core/types/OtherKeys";
 
 const LOG = LogService.createLogger('UserRepositoryItem');
 

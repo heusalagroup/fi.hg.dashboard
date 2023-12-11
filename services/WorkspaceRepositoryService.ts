@@ -1,16 +1,16 @@
 // Copyright (c) 2021-2022. Heusala Group Oy <info@heusalagroup.fi>. All rights reserved.
 
-import { LogService } from "../../core/LogService";
-import { SimpleRepositoryEntry } from "../../core/simpleRepository/types/SimpleRepositoryEntry";
-import { map } from "../../core/functions/map";
-import { Observer, ObserverCallback, ObserverDestructor } from "../../core/Observer";
+import { LogService } from "../../../../io/hyperify/core/LogService";
+import { SimpleRepositoryEntry } from "../../../../io/hyperify/core/simpleRepository/types/SimpleRepositoryEntry";
+import { map } from "../../../../io/hyperify/core/functions/map";
+import { Observer, ObserverCallback, ObserverDestructor } from "../../../../io/hyperify/core/Observer";
 import { StoredWorkspaceRepositoryItem } from "../types/repository/workspace/StoredWorkspaceRepositoryItem";
 import { parseWorkspaceRepositoryItem, toStoredWorkspaceRepositoryItem, WorkspaceRepositoryItem } from "../types/repository/workspace/WorkspaceRepositoryItem";
-import { SimpleRepositoryServiceEvent } from "../../core/simpleRepository/types/SimpleRepositoryServiceEvent";
-import { SimpleRepositoryService } from "../../core/simpleRepository/types/SimpleRepositoryService";
-import { SimpleSharedClientService } from "../../core/simpleRepository/types/SimpleSharedClientService";
-import { SimpleRepositoryInitializer } from "../../core/simpleRepository/types/SimpleRepositoryInitializer";
-import { SimpleRepository } from "../../core/simpleRepository/types/SimpleRepository";
+import { SimpleRepositoryServiceEvent } from "../../../../io/hyperify/core/simpleRepository/types/SimpleRepositoryServiceEvent";
+import { SimpleRepositoryService } from "../../../../io/hyperify/core/simpleRepository/types/SimpleRepositoryService";
+import { SimpleSharedClientService } from "../../../../io/hyperify/core/simpleRepository/types/SimpleSharedClientService";
+import { SimpleRepositoryInitializer } from "../../../../io/hyperify/core/simpleRepository/types/SimpleRepositoryInitializer";
+import { SimpleRepository } from "../../../../io/hyperify/core/simpleRepository/types/SimpleRepository";
 
 const LOG = LogService.createLogger('WorkspaceRepositoryService');
 

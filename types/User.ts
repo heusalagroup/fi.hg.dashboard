@@ -1,8 +1,8 @@
 // Copyright (c) 2022. Heusala Group Oy <info@heusalagroup.fi>. All rights reserved.
 
-import { isString, isStringOrUndefined } from "../../core/types/String";
-import { isRegularObject } from "../../core/types/RegularObject";
-import { hasNoOtherKeysInDevelopment } from "../../core/types/OtherKeys";
+import { isString, isStringOrUndefined } from "../../../../io/hyperify/core/types/String";
+import { isRegularObject } from "../../../../io/hyperify/core/types/RegularObject";
+import { hasNoOtherKeysInDevelopment } from "../../../../io/hyperify/core/types/OtherKeys";
 
 export interface User {
 

@@ -1,15 +1,15 @@
 // Copyright (c) 2021-2022. Heusala Group Oy <info@heusalagroup.fi>. All rights reserved.
 
-import { LogService } from "../../core/LogService";
-import { map } from "../../core/functions/map";
-import { toLower } from "../../core/functions/toLower";
-import { Observer, ObserverCallback, ObserverDestructor } from "../../core/Observer";
-import { SimpleRepositoryEntry } from "../../core/simpleRepository/types/SimpleRepositoryEntry";
-import { SimpleRepositoryServiceEvent } from "../../core/simpleRepository/types/SimpleRepositoryServiceEvent";
-import { SimpleSharedClientService } from "../../core/simpleRepository/types/SimpleSharedClientService";
-import { SimpleRepository } from "../../core/simpleRepository/types/SimpleRepository";
-import { SimpleRepositoryInitializer } from "../../core/simpleRepository/types/SimpleRepositoryInitializer";
-import { SimpleRepositoryService } from "../../core/simpleRepository/types/SimpleRepositoryService";
+import { LogService } from "../../../../io/hyperify/core/LogService";
+import { map } from "../../../../io/hyperify/core/functions/map";
+import { toLower } from "../../../../io/hyperify/core/functions/toLower";
+import { Observer, ObserverCallback, ObserverDestructor } from "../../../../io/hyperify/core/Observer";
+import { SimpleRepositoryEntry } from "../../../../io/hyperify/core/simpleRepository/types/SimpleRepositoryEntry";
+import { SimpleRepositoryServiceEvent } from "../../../../io/hyperify/core/simpleRepository/types/SimpleRepositoryServiceEvent";
+import { SimpleSharedClientService } from "../../../../io/hyperify/core/simpleRepository/types/SimpleSharedClientService";
+import { SimpleRepository } from "../../../../io/hyperify/core/simpleRepository/types/SimpleRepository";
+import { SimpleRepositoryInitializer } from "../../../../io/hyperify/core/simpleRepository/types/SimpleRepositoryInitializer";
+import { SimpleRepositoryService } from "../../../../io/hyperify/core/simpleRepository/types/SimpleRepositoryService";
 import { StoredUserRepositoryItem } from "../types/repository/user/StoredUserRepositoryItem";
 import { UserRepositoryItem, parseUserRepositoryItem, toStoredUserRepositoryItem } from "../types/repository/user/UserRepositoryItem";
 

@@ -1,9 +1,9 @@
 // Copyright (c) 2022. Heusala Group Oy <info@heusalagroup.fi>. All rights reserved.
 
 import { isUser, User } from "../User";
-import { isRegularObject } from "../../../core/types/RegularObject";
-import { hasNoOtherKeysInDevelopment } from "../../../core/types/OtherKeys";
-import { isArrayOf } from "../../../core/types/Array";
+import { isRegularObject } from "../../../../../io/hyperify/core/types/RegularObject";
+import { hasNoOtherKeysInDevelopment } from "../../../../../io/hyperify/core/types/OtherKeys";
+import { isArrayOf } from "../../../../../io/hyperify/core/types/Array";
 
 export interface UserListDTO {
     readonly payload : readonly User[];

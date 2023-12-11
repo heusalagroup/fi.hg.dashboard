@@ -1,11 +1,11 @@
 // Copyright (c) 2022. Heusala Group Oy <info@heusalagroup.fi>. All rights reserved.
 
-import { toLower } from "../../../../core/functions/toLower";
-import { SimpleStoredRepositoryItem } from "../../../../core/simpleRepository/types/SimpleStoredRepositoryItem";
-import { isJsonString } from "../../../../core/Json";
-import { isString } from "../../../../core/types/String";
-import { isRegularObject } from "../../../../core/types/RegularObject";
-import { hasNoOtherKeysInDevelopment } from "../../../../core/types/OtherKeys";
+import { toLower } from "../../../../../../io/hyperify/core/functions/toLower";
+import { SimpleStoredRepositoryItem } from "../../../../../../io/hyperify/core/simpleRepository/types/SimpleStoredRepositoryItem";
+import { isJsonString } from "../../../../../../io/hyperify/core/Json";
+import { isString } from "../../../../../../io/hyperify/core/types/String";
+import { isRegularObject } from "../../../../../../io/hyperify/core/types/RegularObject";
+import { hasNoOtherKeysInDevelopment } from "../../../../../../io/hyperify/core/types/OtherKeys";
 
 export interface StoredUserRepositoryItem extends SimpleStoredRepositoryItem {
     readonly id             : string;

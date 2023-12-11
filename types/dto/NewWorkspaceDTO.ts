@@ -2,9 +2,9 @@
 
 import { isWorkspace, Workspace } from "../Workspace";
 import { isUser, User } from "../User";
-import { isRegularObject } from "../../../core/types/RegularObject";
-import { hasNoOtherKeys } from "../../../core/types/OtherKeys";
-import { isArrayOf } from "../../../core/types/Array";
+import { isRegularObject } from "../../../../../io/hyperify/core/types/RegularObject";
+import { hasNoOtherKeys } from "../../../../../io/hyperify/core/types/OtherKeys";
+import { isArrayOf } from "../../../../../io/hyperify/core/types/Array";
 
 export interface NewWorkspaceDTO {
 
