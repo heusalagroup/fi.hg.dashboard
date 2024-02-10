@@ -1,4 +1,14 @@
-**Join our [Discord](https://discord.gg/UBTrHxA78f) to discuss about our software!**
+_____________________________________________________________________________________
+
+# DEPRECATED
+
+Development under this git repository is ***discontinued*** and future development
+will continue under
+[Hyperify IO project](https://github.com/hyperifyio).
+
+*Join our [Discord](https://discord.gg/UBTrHxA78f) to discuss about our software!*
+
+_____________________________________________________________________________________
 
 # @heusalagroup/fi.hg.dashboard
 
